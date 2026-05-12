@@ -32,10 +32,10 @@ const BtnMint = ({ children, href = '#', size = 'md', className = '', icon = tru
   );
 };
 
-const BtnGhost = ({ children, href = '#', size = 'md', className = '', iconLeft = null }) => {
+const BtnGhost = ({ children, href = 'javascript:void(0)', size = 'md', className = '', iconLeft = null, target, rel }) => {
   const pad = size === 'lg' ? 'px-7 py-4 text-[15px]' : size === 'sm' ? 'px-4 py-2 text-[13px]' : 'px-6 py-3.5 text-sm';
   return (
-    <a href={href} className={`btn-ghost inline-flex items-center justify-center gap-2 rounded-full font-semibold ${pad} ${className}`}>
+    <a href={href} target={target} rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)} className={`btn-ghost inline-flex items-center justify-center gap-2 rounded-full font-semibold ${pad} ${className}`}>
       {iconLeft && <span>{iconLeft}</span>}
       <span>{children}</span>
     </a>
@@ -82,7 +82,7 @@ const Nav = () => {
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-2">
-            <a href="#" className="text-[13.5px] text-gray-300 hover:text-white px-3 py-2">Sign in</a>
+            <a href="https://app.micropokermaster.com/" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-gray-300 hover:text-white px-3 py-2">Sign in</a>
             <BtnMint href="https://app.micropokermaster.com/" target="_blank" size="sm">Try Beta</BtnMint>
           </div>
           <button onClick={() => setOpen(!open)} aria-label="Menu" className="md:hidden btn-ghost rounded-full p-2.5">
@@ -96,8 +96,8 @@ const Nav = () => {
             ))}
             <div className="hairline my-1" />
             <div className="flex items-center gap-2 p-2">
-              <BtnGhost size="sm" className="flex-1">Sign in</BtnGhost>
-              <BtnMint size="sm" className="flex-1">Try Beta</BtnMint>
+              <BtnGhost size="sm" href="https://app.micropokermaster.com/" target="_blank" className="flex-1">Sign in</BtnGhost>
+              <BtnMint size="sm" href="https://app.micropokermaster.com/" target="_blank" className="flex-1">Try Beta</BtnMint>
             </div>
           </div>
         )}

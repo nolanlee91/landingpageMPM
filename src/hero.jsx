@@ -116,7 +116,7 @@ const Hero = () => {
             <Reveal delay={280}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Try Beta</BtnMint>
-                <BtnGhost size="lg" href="#demo" iconLeft={<I.Play/>}>Watch Demo</BtnGhost>
+                <BtnGhost size="lg" iconLeft={<I.Play/>}>Watch Demo</BtnGhost>
               </div>
             </Reveal>
             <Reveal delay={340}>

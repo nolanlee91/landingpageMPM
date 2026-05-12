@@ -347,7 +347,7 @@ const FinalCTA = () => {
             </p>
             <div className="mt-9 flex flex-wrap gap-3 justify-center">
               <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Try Beta</BtnMint>
-              <BtnGhost size="lg" href="#" iconLeft={<I.Play/>}>Watch Demo</BtnGhost>
+              <BtnGhost size="lg" iconLeft={<I.Play/>}>Watch Demo</BtnGhost>
             </div>
             <div className="mt-8 flex flex-wrap gap-2.5 justify-center">
               <TrustChip>Free during beta</TrustChip>
@@ -387,7 +387,7 @@ const Footer = () => {
                 ['Instagram', <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>],
                 ['Discord', <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.5 5.4A17 17 0 0 0 15.3 4l-.2.4a14 14 0 0 0-6.2 0L8.7 4a17 17 0 0 0-4.2 1.4C2.3 9 1.7 12.5 2 16a17 17 0 0 0 5.1 2.6l.4-.6a11 11 0 0 1-1.7-.8l.4-.3a12 12 0 0 0 11.6 0l.4.3a11 11 0 0 1-1.7.8l.4.6A17 17 0 0 0 22 16c.3-3.7-.4-7.2-2.5-10.6zM9 14.3a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm6 0a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6z"/></svg>],
               ].map(([name, ic]) => (
-                <a key={name} aria-label={name} href="#" className="w-9 h-9 rounded-full grid place-items-center bg-white/5 border border-white/10 text-gray-300 hover:text-mint hover:border-mint/40 transition-colors">
+                <a key={name} aria-label={name} href="javascript:void(0)" className="w-9 h-9 rounded-full grid place-items-center bg-white/5 border border-white/10 text-gray-300 hover:text-mint hover:border-mint/40 transition-colors">
                   {ic}
                 </a>
               ))}
@@ -399,7 +399,7 @@ const Footer = () => {
                 <div className="text-xs uppercase tracking-[0.2em] text-gray-500 font-semibold">{col.title}</div>
                 <ul className="mt-3.5 space-y-2.5">
                   {col.links.map((l) => (
-                    <li key={l}><a href="#" className="text-gray-300 hover:text-white text-sm transition-colors">{l}</a></li>
+                    <li key={l}><a href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm transition-colors">{l}</a></li>
                   ))}
                 </ul>
               </div>
