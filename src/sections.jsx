@@ -346,7 +346,7 @@ const FinalCTA = () => {
               Study smarter. Track better. Improve faster.
             </p>
             <div className="mt-9 flex flex-wrap gap-3 justify-center">
-              <BtnMint size="lg" href="#">Try Beta</BtnMint>
+              <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Try Beta</BtnMint>
               <BtnGhost size="lg" href="#" iconLeft={<I.Play/>}>Watch Demo</BtnGhost>
             </div>
             <div className="mt-8 flex flex-wrap gap-2.5 justify-center">

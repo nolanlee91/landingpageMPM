@@ -22,10 +22,10 @@ const Reveal = ({ children, delay = 0, as: As = 'div', className = '' }) => {
   return <As ref={ref} className={`reveal ${className}`}>{children}</As>;
 };
 
-const BtnMint = ({ children, href = '#', size = 'md', className = '', icon = true }) => {
+const BtnMint = ({ children, href = '#', size = 'md', className = '', icon = true, target, rel }) => {
   const pad = size === 'lg' ? 'px-7 py-4 text-[15px]' : size === 'sm' ? 'px-4 py-2 text-[13px]' : 'px-6 py-3.5 text-sm';
   return (
-    <a href={href} className={`btn-mint inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide ${pad} ${className}`}>
+    <a href={href} target={target} rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)} className={`btn-mint inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide ${pad} ${className}`}>
       <span>{children}</span>
       {icon && <span className="-mr-1"><I.Arrow /></span>}
     </a>
@@ -83,7 +83,7 @@ const Nav = () => {
           </nav>
           <div className="hidden md:flex items-center gap-2">
             <a href="#" className="text-[13.5px] text-gray-300 hover:text-white px-3 py-2">Sign in</a>
-            <BtnMint href="#cta" size="sm">Try Beta</BtnMint>
+            <BtnMint href="https://app.micropokermaster.com/" target="_blank" size="sm">Try Beta</BtnMint>
           </div>
           <button onClick={() => setOpen(!open)} aria-label="Menu" className="md:hidden btn-ghost rounded-full p-2.5">
             {open ? <I.Close /> : <I.Menu />}
