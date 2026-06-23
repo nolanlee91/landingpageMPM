@@ -118,15 +118,9 @@ const Hero = () => {
               </ul>
             </Reveal>
             <Reveal delay={280}>
-              <div className="mt-8">
+              <div className="mt-8 flex items-center gap-4 flex-wrap">
                 <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Start free</BtnMint>
-              </div>
-            </Reveal>
-            <Reveal delay={340}>
-              <div className="mt-7 flex flex-wrap gap-2.5">
-                <TrustChip>No signup to try</TrustChip>
-                <TrustChip>First insight in ~60s</TrustChip>
-                <TrustChip>Live &amp; online</TrustChip>
+                <span className="text-[13px] text-gray-400">No signup · first insight in ~60s</span>
               </div>
             </Reveal>
           </div>

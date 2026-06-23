@@ -55,10 +55,10 @@ const Problem = () => {
 };
 
 // ---- Feature row component (alternating screenshot + content) ----
-const FeatureRow = ({ idx, eyebrow, title, body, bullets, screenshot, screenshot2, accent = 'mint', mirror = false }) => {
+const FeatureRow = ({ idx, eyebrow, title, body, bullets, screenshot, screenshot2, accent = 'mint', mirror = false, id }) => {
   return (
     <Reveal>
-      <div className={`grid lg:grid-cols-12 gap-10 lg:gap-16 items-center py-16 lg:py-24 ${mirror ? 'lg:[&>.media]:order-2' : ''}`}>
+      <div id={id} className={`grid lg:grid-cols-12 gap-10 lg:gap-16 items-center py-16 lg:py-24 scroll-mt-24 ${mirror ? 'lg:[&>.media]:order-2' : ''}`}>
         <div className="lg:col-span-6 media flex justify-center relative">
           <div className="absolute inset-0 -z-10" style={{background: accent==='blue' ? 'radial-gradient(closest-side, rgba(106,169,255,0.18), transparent 70%)' : 'radial-gradient(closest-side, rgba(87,242,135,0.18), transparent 70%)'}}/>
           {screenshot2 ? (
@@ -192,11 +192,12 @@ const Features = () => {
           />
           <FeatureRow
             idx={9}
+            id="install"
             eyebrow="Install it"
             title="Add it to your home screen."
             body="No app store, no download wait. Tap “Add to home screen” and MicroPokerMaster opens full-screen and launches like a native app — straight from your phone."
-            bullets={['Add to home screen', 'Opens full-screen', 'No app store needed', 'iOS & Android']}
-            screenshot="assets/install-app.jpg"
+            bullets={['Open Settings → Install app', 'Add to home screen', 'Opens full-screen, app-like', 'iOS & Android']}
+            screenshot="assets/install-prefs.jpg"
             accent="blue"
           />
         </div>

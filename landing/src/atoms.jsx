@@ -68,6 +68,7 @@ const Nav = () => {
   const links = [
     ['Features', '#features'],
     ['Leaks', '#leaks'],
+    ['Install', '#install'],
     ['Pricing', '#pricing'],
   ];
   return (
