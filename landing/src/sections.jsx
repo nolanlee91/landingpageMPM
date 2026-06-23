@@ -190,6 +190,15 @@ const Features = () => {
             accent="mint"
             mirror
           />
+          <FeatureRow
+            idx={9}
+            eyebrow="Install it"
+            title="Add it to your home screen."
+            body="No app store, no download wait. Tap “Add to home screen” and MicroPokerMaster opens full-screen and launches like a native app — straight from your phone."
+            bullets={['Add to home screen', 'Opens full-screen', 'No app store needed', 'iOS & Android']}
+            screenshot="assets/install-app.jpg"
+            accent="blue"
+          />
         </div>
       </div>
     </section>
