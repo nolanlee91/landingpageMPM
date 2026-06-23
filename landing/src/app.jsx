@@ -10,7 +10,6 @@ function App() {
         <Features />
         <LeakDetection />
         <Pricing />
-        <FinalCTA />
       </main>
       <Footer />
     </div>

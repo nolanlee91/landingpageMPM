@@ -10,24 +10,28 @@ const HeroPhones = () => {
       <div className="absolute bottom-0 left-0 w-[55%] h-[50%] -z-10 rounded-full"
            style={{ background: 'radial-gradient(closest-side, rgba(106,169,255,0.18), transparent 70%)' }} />
 
-      {/* Center phone — Leak Profile (the hero shot / moat) */}
-      <div className="absolute left-1/2 top-6 -translate-x-1/2 float-a z-20">
-        <Phone src="assets/leak-profile.jpg" glow="mint" width={300} notch={false} />
+      {/* Center phone — Leak Profile (the hero shot / moat).
+          NOTE: the float-* animation sets `transform: translateY()` which would
+          override Tailwind's -translate-x-1/2 / rotate. Keep positioning+rotate on
+          the OUTER div and the float animation on an INNER div so they compose
+          (otherwise the phone loses centering and gets cut off on mobile). */}
+      <div className="absolute left-1/2 top-6 -translate-x-1/2 z-20 max-w-[86vw]">
+        <div className="float-a"><Phone src="assets/leak-profile.jpg" glow="mint" width={300} notch={false} /></div>
       </div>
 
       {/* Left phone — AI Coach analysis */}
-      <div className="absolute left-0 lg:-left-10 top-32 sm:top-28 float-b -rotate-[8deg] z-10 hidden sm:block">
-        <Phone src="assets/ai-coach-analysis.jpg" glow="blue" width={230} notch={false} />
+      <div className="absolute left-0 lg:-left-10 top-32 sm:top-28 -rotate-[8deg] z-10 hidden sm:block">
+        <div className="float-b"><Phone src="assets/ai-coach-analysis.jpg" glow="blue" width={230} notch={false} /></div>
       </div>
 
       {/* Right phone — Odds */}
-      <div className="absolute right-0 lg:-right-8 top-40 sm:top-36 float-c rotate-[7deg] z-10 hidden sm:block">
-        <Phone src="assets/odds.jpg" glow="mint" width={230} notch={false} />
+      <div className="absolute right-0 lg:-right-8 top-40 sm:top-36 rotate-[7deg] z-10 hidden sm:block">
+        <div className="float-c"><Phone src="assets/odds.jpg" glow="mint" width={230} notch={false} /></div>
       </div>
 
       {/* Bottom-right small — Quiz */}
-      <div className="absolute right-6 bottom-2 float-b rotate-[4deg] z-30 hidden lg:block">
-        <Phone src="assets/quiz.jpg" glow="mint" width={210} notch={false} />
+      <div className="absolute right-6 bottom-2 rotate-[4deg] z-30 hidden lg:block">
+        <div className="float-b"><Phone src="assets/quiz.jpg" glow="mint" width={210} notch={false} /></div>
       </div>
 
       {/* Floating analytics card */}
@@ -83,7 +87,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
           <div className="lg:col-span-6 xl:col-span-7">
             <Reveal>
-              <div className="inline-flex items-center gap-2 chip"><span className="dot" />Now in Beta · Live Cash Focused</div>
+              <div className="inline-flex items-center gap-2 chip"><span className="dot" />AI Leak Finder · Live Cash</div>
             </Reveal>
             <Reveal delay={80}>
               <Display className="mt-5 text-[52px] sm:text-[80px] lg:text-[100px] xl:text-[112px]">
@@ -115,7 +119,7 @@ const Hero = () => {
             </Reveal>
             <Reveal delay={280}>
               <div className="mt-8">
-                <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Try Beta — free</BtnMint>
+                <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Start free</BtnMint>
               </div>
             </Reveal>
             <Reveal delay={340}>

@@ -81,7 +81,7 @@ const Nav = () => {
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-2">
-            <BtnMint href="https://app.micropokermaster.com/" target="_blank" size="sm">Try Beta</BtnMint>
+            <BtnMint href="https://app.micropokermaster.com/" target="_blank" size="sm">Start free</BtnMint>
           </div>
           <button onClick={() => setOpen(!open)} aria-label="Menu" className="md:hidden btn-ghost rounded-full p-2.5">
             {open ? <I.Close /> : <I.Menu />}
@@ -94,7 +94,7 @@ const Nav = () => {
             ))}
             <div className="hairline my-1" />
             <div className="p-2">
-              <BtnMint size="sm" href="https://app.micropokermaster.com/" target="_blank" className="w-full">Try Beta</BtnMint>
+              <BtnMint size="sm" href="https://app.micropokermaster.com/" target="_blank" className="w-full">Start free</BtnMint>
             </div>
           </div>
         )}

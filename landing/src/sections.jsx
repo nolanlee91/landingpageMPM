@@ -240,7 +240,7 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <BtnGhost size="lg" href="https://app.micropokermaster.com/" target="_blank" className="mt-8 w-full">Try Beta — free</BtnGhost>
+              <BtnGhost size="lg" href="https://app.micropokermaster.com/" target="_blank" className="mt-8 w-full">Start free</BtnGhost>
             </div>
           </Reveal>
 
@@ -281,46 +281,6 @@ const Pricing = () => {
   );
 };
 
-// ----------- Final CTA -----------
-const FinalCTA = () => {
-  return (
-    <section id="cta" className="section relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal>
-          <div className="relative rounded-[40px] overflow-hidden p-10 sm:p-16 lg:p-24 text-center"
-               style={{
-                 background: 'linear-gradient(180deg, rgba(11,18,40,0.7) 0%, rgba(5,8,22,0.7) 100%)',
-                 border: '1px solid rgba(87,242,135,0.18)',
-               }}>
-            <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[120%] h-[400px] -z-10"
-                 style={{ background: 'radial-gradient(closest-side, rgba(87,242,135,0.35), transparent 70%)' }} />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mint to-transparent opacity-50" />
-            <div className="absolute inset-0 bg-grid opacity-25" style={{
-              WebkitMaskImage:'radial-gradient(closest-side, black 30%, transparent 75%)',
-              maskImage:'radial-gradient(closest-side, black 30%, transparent 75%)'
-            }} />
-            <Eyebrow>Beta Access</Eyebrow>
-            <Display className="mt-5 text-[52px] sm:text-[84px] lg:text-[124px]">
-              Find your<br/>biggest leak.
-            </Display>
-            <p className="mt-6 text-gray-300 text-lg sm:text-xl max-w-xl mx-auto">
-              Paste one hand and see what it’s really costing you — in about a minute, free.
-            </p>
-            <div className="mt-9 flex justify-center">
-              <BtnMint size="lg" href="https://app.micropokermaster.com/" target="_blank">Try Beta — free</BtnMint>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-2.5 justify-center">
-              <TrustChip>No signup to try</TrustChip>
-              <TrustChip>3 AI requests/day free</TrustChip>
-              <TrustChip>Web · Mobile soon</TrustChip>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-};
-
 // ----------- Footer -----------
 const Footer = () => {
   const APP = 'https://app.micropokermaster.com/';
@@ -329,7 +289,7 @@ const Footer = () => {
       ['Features', '#features'],
       ['Leaks', '#leaks'],
       ['Pricing', '#pricing'],
-      ['Try Beta', APP],
+      ['Start free', APP],
     ] },
     { title: 'Legal', links: [
       ['Terms', APP + 'terms'],
@@ -376,4 +336,4 @@ const Footer = () => {
   );
 };
 
-Object.assign(window, { Problem, Features, Pricing, FinalCTA, Footer });
+Object.assign(window, { Problem, Features, Pricing, Footer });
