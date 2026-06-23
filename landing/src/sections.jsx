@@ -210,7 +210,7 @@ const Features = () => {
 const Pricing = () => {
   const freePerks = [
     'Paste a hand → your biggest mistake + a better line',
-    '3 AI requests/day (8 on your first day)',
+    '10 hand analyses to get started',
     'Odds calculator, bankroll & quiz',
     'A teaser of your top leak',
   ];
@@ -219,7 +219,7 @@ const Pricing = () => {
     'The $ cost of each leak (not blurred)',
     'Step-by-step fix plan built from your own hands',
     'Session debriefs + deep follow-up coaching',
-    '20 AI requests/day',
+    '60 hand analyses every month',
   ];
   return (
     <section id="pricing" className="section relative">
