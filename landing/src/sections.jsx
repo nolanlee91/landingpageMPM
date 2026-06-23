@@ -62,8 +62,9 @@ const FeatureRow = ({ idx, eyebrow, title, body, bullets, screenshot, screenshot
         <div className="lg:col-span-6 media flex justify-center relative">
           <div className="absolute inset-0 -z-10" style={{background: accent==='blue' ? 'radial-gradient(closest-side, rgba(106,169,255,0.18), transparent 70%)' : 'radial-gradient(closest-side, rgba(87,242,135,0.18), transparent 70%)'}}/>
           {screenshot2 ? (
-            <div className="flex items-center justify-center">
-              <div className="-rotate-[7deg] float-b -mr-14 sm:-mr-20 z-0 opacity-95">
+            <div className="flex items-center justify-center max-w-full">
+              {/* Second phone only on ≥sm — two side-by-side phones overflow a narrow mobile column */}
+              <div className="hidden sm:block -rotate-[7deg] float-b sm:-mr-20 z-0 opacity-95">
                 <Phone src={screenshot2} glow={accent} width={210} notch={false} />
               </div>
               <div className="rotate-[4deg] float-a z-10">
@@ -322,43 +323,44 @@ const FinalCTA = () => {
 
 // ----------- Footer -----------
 const Footer = () => {
+  const APP = 'https://app.micropokermaster.com/';
   const cols = [
-    { title: 'Product', links: ['AI Coach','Bankroll','Odds Calculator','Hand History','Quiz'] },
-    { title: 'Company', links: ['About','Changelog','Roadmap','Contact'] },
-    { title: 'Resources', links: ['Help center','Press kit','Status','Brand'] },
-    { title: 'Legal', links: ['Terms','Privacy','Responsible play','Cookies'] },
+    { title: 'Product', links: [
+      ['Features', '#features'],
+      ['Leaks', '#leaks'],
+      ['Pricing', '#pricing'],
+      ['Try Beta', APP],
+    ] },
+    { title: 'Legal', links: [
+      ['Terms', APP + 'terms'],
+      ['Privacy', APP + 'privacy'],
+      ['Contact', 'mailto:support@micropokermaster.com'],
+    ] },
   ];
+  const ext = (h) => /^https?:|^mailto:/.test(h);
   return (
     <footer className="border-t border-line pt-16 pb-10 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-4">
+        <div className="grid sm:grid-cols-12 gap-10">
+          <div className="sm:col-span-6 lg:col-span-5">
             <Wordmark size="lg" />
             <p className="mt-4 text-gray-400 text-sm max-w-xs leading-relaxed">
               The AI poker leak finder for live cash players. Paste a hand, find your leaks, fix them — from your phone.
             </p>
-            <div className="mt-6 flex items-center gap-2">
-              {/* Social */}
-              {[
-                ['Twitter', <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18 3h3l-7.5 8.6L22 21h-6.7l-5.2-6.1L4 21H1l8-9.1L1.7 3h6.9l4.7 5.6L18 3zm-1.2 16h1.7L7.3 4.9H5.5L16.8 19z"/></svg>],
-                ['YouTube', <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.6A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1c.4-1.5.5-3.2.5-4.8s-.1-3.3-.5-4.8zM10 15.4V8.6L15.8 12 10 15.4z"/></svg>],
-                ['TikTok', <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16.5 2c.4 2.1 1.6 3.7 3.5 4.4v3a7.7 7.7 0 0 1-4-1.1v6.5a6.4 6.4 0 1 1-6.4-6.4c.3 0 .6 0 1 .1v3.2a3.2 3.2 0 1 0 2.3 3V2h3.6z"/></svg>],
-                ['Instagram', <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>],
-                ['Discord', <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.5 5.4A17 17 0 0 0 15.3 4l-.2.4a14 14 0 0 0-6.2 0L8.7 4a17 17 0 0 0-4.2 1.4C2.3 9 1.7 12.5 2 16a17 17 0 0 0 5.1 2.6l.4-.6a11 11 0 0 1-1.7-.8l.4-.3a12 12 0 0 0 11.6 0l.4.3a11 11 0 0 1-1.7.8l.4.6A17 17 0 0 0 22 16c.3-3.7-.4-7.2-2.5-10.6zM9 14.3a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm6 0a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6z"/></svg>],
-              ].map(([name, ic]) => (
-                <a key={name} aria-label={name} href="javascript:void(0)" className="w-9 h-9 rounded-full grid place-items-center bg-white/5 border border-white/10 text-gray-300 hover:text-mint hover:border-mint/40 transition-colors">
-                  {ic}
-                </a>
-              ))}
-            </div>
           </div>
-          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <div className="sm:col-span-6 lg:col-span-7 grid grid-cols-2 gap-8">
             {cols.map((col) => (
               <div key={col.title}>
                 <div className="text-xs uppercase tracking-[0.2em] text-gray-500 font-semibold">{col.title}</div>
                 <ul className="mt-3.5 space-y-2.5">
-                  {col.links.map((l) => (
-                    <li key={l}><a href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm transition-colors">{l}</a></li>
+                  {col.links.map(([label, href]) => (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        {...(ext(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        className="text-gray-300 hover:text-white text-sm transition-colors"
+                      >{label}</a>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -366,12 +368,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="hairline mt-14"></div>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-500">
-          <div>© 2026 MicroPokerMaster · Built for serious poker players.</div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-mint" style={{boxShadow:'0 0 10px #57f287'}}></span>
-            <span>All systems operational</span>
-          </div>
+        <div className="mt-6 text-xs text-gray-500">
+          © 2026 MicroPokerMaster · Built for live cash players.
         </div>
       </div>
     </footer>
