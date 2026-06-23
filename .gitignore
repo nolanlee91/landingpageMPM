@@ -1,0 +1,22 @@
+# This repo = MicroPokerMaster public landing page (github.com/nolanlee91/landingpageMPM).
+# It is PUBLIC, so only the landing/ site is tracked here.
+# app/, marketing/ and PROJECT/ are managed separately — don't commit them here.
+
+# App source has its own git repo
+app/
+
+# Marketing is wired to the shared Hermes engine (folder 11)
+marketing/
+
+# Internal strategy / pricing / tasks — keep OUT of the public repo
+PROJECT/
+
+# Dependencies / build artifacts
+node_modules/
+dist/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

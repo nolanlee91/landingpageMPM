@@ -9,8 +9,7 @@ function App() {
         <Problem />
         <Features />
         <LeakDetection />
-        <ModernEra />
-        <Testimonials />
+        <Pricing />
         <FinalCTA />
       </main>
       <Footer />

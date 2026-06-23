@@ -68,8 +68,7 @@ const Nav = () => {
   const links = [
     ['Features', '#features'],
     ['Leaks', '#leaks'],
-    ['For Creators', '#creators'],
-    ['Testimonials', '#testimonials'],
+    ['Pricing', '#pricing'],
   ];
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all ${scrolled ? 'backdrop-blur-md' : ''}`}>
@@ -82,7 +81,6 @@ const Nav = () => {
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-2">
-            <a href="https://app.micropokermaster.com/" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-gray-300 hover:text-white px-3 py-2">Sign in</a>
             <BtnMint href="https://app.micropokermaster.com/" target="_blank" size="sm">Try Beta</BtnMint>
           </div>
           <button onClick={() => setOpen(!open)} aria-label="Menu" className="md:hidden btn-ghost rounded-full p-2.5">
@@ -95,9 +93,8 @@ const Nav = () => {
               <a key={l} href={h} onClick={() => setOpen(false)} className="block px-3 py-3 text-gray-200 hover:text-white">{l}</a>
             ))}
             <div className="hairline my-1" />
-            <div className="flex items-center gap-2 p-2">
-              <BtnGhost size="sm" href="https://app.micropokermaster.com/" target="_blank" className="flex-1">Sign in</BtnGhost>
-              <BtnMint size="sm" href="https://app.micropokermaster.com/" target="_blank" className="flex-1">Try Beta</BtnMint>
+            <div className="p-2">
+              <BtnMint size="sm" href="https://app.micropokermaster.com/" target="_blank" className="w-full">Try Beta</BtnMint>
             </div>
           </div>
         )}

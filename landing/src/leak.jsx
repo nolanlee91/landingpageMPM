@@ -33,7 +33,7 @@ const StatCell = ({ label, value, sub, color = 'text-mint' }) => (
   </div>
 );
 
-const LeakRow = ({ rank, title, desc, severity, freq }) => (
+const LeakRow = ({ rank, title, desc, severity, ev, hands, conf }) => (
   <div className="flex items-center gap-3 sm:gap-4 py-4 border-b border-line last:border-b-0">
     <span className="font-mono text-xs text-gray-500 w-5 text-right">{rank}</span>
     <div className="min-w-0 flex-1">
@@ -47,22 +47,18 @@ const LeakRow = ({ rank, title, desc, severity, freq }) => (
       </div>
       <div className="text-[12px] text-gray-400 mt-0.5">{desc}</div>
     </div>
-    <div className="hidden sm:flex items-center gap-3">
-      <div className="w-24 h-1.5 rounded-full bg-white/8 overflow-hidden">
-        <div className={`h-full ${severity==='high'?'bg-red-400':severity==='med'?'bg-amber-300':'bg-mint'}`} style={{width:`${freq}%`}}/>
-      </div>
-      <span className="text-[12px] text-gray-300 font-mono w-10 text-right">{freq}%</span>
+    <div className="hidden sm:flex flex-col items-end gap-0.5 shrink-0">
+      <span className="text-[13px] font-mono font-semibold text-red-300">~-${Math.abs(ev).toLocaleString()}</span>
+      <span className="text-[10px] text-gray-500">{conf}</span>
     </div>
   </div>
 );
 
 const LeakDetection = () => {
   const leaks = [
-    { rank: 1, title: 'Overfolding river', desc: 'Single raise pots, OOP — 22% under MDF vs medium sizing', severity: 'high', freq: 78 },
-    { rank: 2, title: 'Calling too wide preflop', desc: 'UTG and HJ vs 3-bets — flat % above population baseline', severity: 'high', freq: 71 },
-    { rank: 3, title: 'Bluffing too little', desc: 'Turn double-barrel on brick boards — under-bluffed by 14%', severity: 'med', freq: 54 },
-    { rank: 4, title: 'Losing from blinds', desc: 'BB defense too tight vs CO/BTN min-raises — costing ~6 bb/100', severity: 'med', freq: 47 },
-    { rank: 5, title: 'C-bet sizing leak', desc: 'Using one size on dry boards — easy to exploit, EV –2.1 bb', severity: 'low', freq: 31 },
+    { rank: 1, title: 'River Call Too Wide', desc: 'Calling river jams from tight players with non-nutted hands', severity: 'high', ev: 1010, hands: 5, conf: '×5 recurring' },
+    { rank: 2, title: 'Missed Value', desc: 'Checking back strong top pairs+ on safe rivers', severity: 'med', ev: 45, hands: 3, conf: '×3 recurring' },
+    { rank: 3, title: 'Overfolding Turn', desc: 'Folding too much to turn barrels on brick boards', severity: 'low', ev: 30, hands: 2, conf: 'Building' },
   ];
 
   return (
@@ -80,7 +76,7 @@ const LeakDetection = () => {
           <div className="lg:col-span-5">
             <Reveal delay={120}>
               <p className="text-gray-300 text-lg max-w-md leading-relaxed">
-                Every hand you log feeds a model of your tendencies. The longer you study, the sharper the picture — leaks ranked by frequency and EV cost, not theory.
+                Every hand you analyze with the AI Coach gets tagged with its leak and the dollars it cost. The app groups them so your most expensive mistakes surface first — ranked by real money lost, not theory.
               </p>
             </Reveal>
           </div>
@@ -98,23 +94,21 @@ const LeakDetection = () => {
               <div className="flex items-center gap-3">
                 <BrandMark size={32}/>
                 <div>
-                  <div className="text-white text-sm font-semibold">Leak Report · last 90 days</div>
-                  <div className="text-[11px] text-gray-400">12,418 hands · 38 sessions · $1/$3 → $5/$10</div>
+                  <div className="text-white text-sm font-semibold">Your Biggest Money Leaks</div>
+                  <div className="text-[11px] text-gray-400">From the hands you analyzed with AI Coach</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="chip text-[11px]"><span className="dot"/>updated 2m ago</span>
-                <span className="chip text-[11px]"><span className="dot" style={{background:'#6aa9ff', boxShadow:'0 0 10px #6aa9ff'}}/>v2.4 model</span>
+                <span className="chip text-[11px]"><span className="dot"/>AI scored</span>
+                <span className="chip text-[11px]"><span className="dot" style={{background:'#6aa9ff', boxShadow:'0 0 10px #6aa9ff'}}/>Pro feature</span>
               </div>
             </div>
 
             {/* Stats row */}
-            <div className="relative z-10 mt-6 grid grid-cols-2 sm:grid-cols-5 gap-3">
-              <StatCell label="VPIP" value="24.3" sub="population: 23.0" color="text-white" />
-              <StatCell label="PFR" value="19.1" sub="3bet 7.4%" color="text-white" />
-              <StatCell label="Aggression" value="2.8" sub="post-flop" color="text-haze" />
-              <StatCell label="Leak score" value="34" sub="↓ 12 vs last month" color="text-mint" />
-              <StatCell label="Study streak" value="14d" sub="goal: 30 days" color="text-mint" />
+            <div className="relative z-10 mt-6 grid grid-cols-3 gap-3">
+              <StatCell label="Hands analyzed" value="8" sub="so far" color="text-white" />
+              <StatCell label="$ lost (total)" value="~$1,085" sub="across analyzed hands" color="text-red-300" />
+              <StatCell label="Top leak" value="River Call" sub="×5 recurring" color="text-mint" />
             </div>
 
             {/* Two-column body */}
@@ -124,7 +118,7 @@ const LeakDetection = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-[11px] uppercase tracking-[0.18em] text-gray-500 font-semibold">Detected Leaks</div>
-                    <div className="text-white text-lg font-semibold mt-0.5">Top 5 by EV cost</div>
+                    <div className="text-white text-lg font-semibold mt-0.5">Top leaks by EV cost</div>
                   </div>
                   <span className="chip text-[10px]"><span className="dot"/>AI scored</span>
                 </div>
@@ -133,40 +127,23 @@ const LeakDetection = () => {
                 </div>
               </div>
 
-              {/* EV trend + study */}
+              {/* Lost EV summary + how it works */}
               <div className="lg:col-span-5 flex flex-col gap-6">
-                <div className="rounded-2xl bg-black/30 border border-line p-5">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-[11px] uppercase tracking-[0.18em] text-gray-500 font-semibold">EV Trend</div>
-                      <div className="font-display text-4xl text-mint mt-1" style={{textShadow:'0 0 16px rgba(87,242,135,0.4)'}}>+4.2 bb/100</div>
-                      <div className="text-[11px] text-gray-400">net of leaks · 90d rolling</div>
-                    </div>
-                    <span className="chip text-[10px] text-mint border-mint/30 bg-mint/5"><I.Trend size={12}/> +1.6</span>
-                  </div>
-                  <div className="mt-3">
-                    <Sparkline data={[-0.2,0.4,0.1,0.8,1.2,0.9,1.5,2.0,1.7,2.4,2.9,2.6,3.4,3.0,3.7,4.1,3.8,4.2]} />
+                <div className="rounded-2xl border border-red-400/20 p-5" style={{background:'rgba(244,112,103,0.06)'}}>
+                  <div className="text-[11px] uppercase tracking-[0.18em] text-gray-500 font-semibold">$ lost — total</div>
+                  <div className="font-display text-4xl text-red-300 mt-1" style={{textShadow:'0 0 16px rgba(244,112,103,0.35)'}}>~$1,085</div>
+                  <div className="text-[11px] text-gray-400 mt-0.5">across 8 analyzed hands · not a projection</div>
+                  <div className="mt-3 text-[12px] text-gray-300 leading-relaxed">
+                    Figures are AI estimates from the real pot and bet sizes in each hand — directional, not solver-exact. No misleading “$/month” extrapolation.
                   </div>
                 </div>
                 <div className="rounded-2xl bg-black/30 border border-line p-5">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-gray-500 font-semibold">Study Consistency</div>
-                  <div className="mt-3 grid grid-cols-7 gap-1">
-                    {[
-                      0.8,1,0.6,0.4,0,0.9,1,
-                      0.7,0.5,0.8,1,1,0.3,0.6,
-                      1,0.8,1,0.4,0.2,1,0.9,
-                      0.5,0.7,1,1,0.8,1,0.9,
-                    ].map((v,i)=>(
-                      <div key={i} className="aspect-square rounded-sm" style={{
-                        background: v === 0 ? 'rgba(255,255,255,0.04)' : `rgba(87,242,135, ${0.15 + v*0.75})`,
-                        boxShadow: v > 0.6 ? '0 0 8px rgba(87,242,135,0.4)' : 'none'
-                      }}/>
-                    ))}
-                  </div>
-                  <div className="mt-3 flex items-center justify-between text-[11px] text-gray-400">
-                    <span>4 weeks</span>
-                    <span><span className="text-mint font-semibold">22</span>/28 days studied</span>
-                  </div>
+                  <div className="text-[11px] uppercase tracking-[0.18em] text-gray-500 font-semibold">How it works</div>
+                  <ul className="mt-3 space-y-2.5 text-[13px] text-gray-300">
+                    <li className="flex items-start gap-2.5"><span className="mt-0.5 text-mint"><I.Check/></span>Analyze a hand → AI tags its leak + $ cost</li>
+                    <li className="flex items-start gap-2.5"><span className="mt-0.5 text-mint"><I.Check/></span>Leaks group by category and rank by $ lost</li>
+                    <li className="flex items-start gap-2.5"><span className="mt-0.5 text-mint"><I.Check/></span>The more hands you log, the truer the ranking</li>
+                  </ul>
                 </div>
               </div>
             </div>
