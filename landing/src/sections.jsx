@@ -242,7 +242,7 @@ const Pricing = () => {
               <div className="mt-5 flex items-baseline gap-1">
                 <span className="font-display text-6xl text-white">$0</span>
               </div>
-              <div className="mt-1 text-gray-400 text-sm">No signup needed to try.</div>
+              <div className="mt-1 text-gray-400 text-sm">Free account · no card needed.</div>
               <ul className="mt-6 space-y-3 flex-1">
                 {freePerks.map(p => (
                   <li key={p} className="flex items-start gap-2.5 text-[14.5px] text-gray-200">
