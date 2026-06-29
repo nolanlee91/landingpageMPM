@@ -11,6 +11,22 @@ marketing/
 # Internal strategy / pricing / tasks — keep OUT of the public repo
 PROJECT/
 
+# Internal ops runbooks — keep OUT of the public repo
+STRIPE-LIVE.md
+EMAIL-SETUP.md
+MARKETING-PLAN.md
+
+# SECRETS — never commit (this is a PUBLIC repo)
+Key stripe.md
+recovery-codes-vercel.txt
+stripe_backup_code.txt
+*secret*
+*backup_code*
+recovery-codes*
+*.key
+.env
+.env.*
+
 # Dependencies / build artifacts
 node_modules/
 dist/
